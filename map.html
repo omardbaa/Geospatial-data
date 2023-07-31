@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_e20dc4e2a5d6ae6c21f11e85157cf771 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>
+    
+    
+    <div style="
+        position: fixed;
+        bottom: 50px;
+        left: 50px;
+        z-index: 1000;
+        padding: 10px;
+        border: 2px solid grey;
+        background-color: white;
+        font-size: 16px;
+    ">
+    <p><i class="fa fa-hospital" style="color:green; font-size: 30px;"></i>&nbsp;Pharmacie</p>
+    <p><i class="fa fa-train" style="color:red; font-size: 30px;"></i>&nbsp;Gare</p>
+    <p><i class="fa fa-graduation-cap" style="color:blue; font-size: 30px;"></i>&nbsp;YouCode</p>
+    <p><i class="fa fa-mosque" style="color:orange; font-size: 30px;"></i>&nbsp;Masjid</p>
+    <p><i class="fa fa-shopping-basket" style="color:purple; font-size: 30px;"></i>&nbsp;Souk</p>
+    <p><i class="fa fa-hotel" style="color:brown; font-size: 30px;"></i>&nbsp;Hôtel</p>
+    <p><i class="fa fa-tree" style="color:#66ff66; font-size: 30px;"></i>&nbsp;Jardin</p>
+    </div>
+    
+            <div class="folium-map" id="map_e20dc4e2a5d6ae6c21f11e85157cf771" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_e20dc4e2a5d6ae6c21f11e85157cf771 = L.map(
+                "map_e20dc4e2a5d6ae6c21f11e85157cf771",
+                {
+                    center: [32.25, -8.52],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 12,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_b1fcd48b744a895f5af6b6f181633c27 = L.tileLayer(
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca target=\"_blank\" href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca target=\"_blank\" href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_e20dc4e2a5d6ae6c21f11e85157cf771);
+        
+    
+            var marker_cluster_f8b7594f731f8a47fddeaffce3efa669 = L.markerClusterGroup(
+                {}
+            );
+            map_e20dc4e2a5d6ae6c21f11e85157cf771.addLayer(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var marker_370c037f2e310ef2825c116636f1098a = L.marker(
+                [32.2311881, -8.5564831],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_4cfcfa3f630a5d780980cb7e91b52ae2 = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-info-circle\" style=\"color: gray; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_370c037f2e310ef2825c116636f1098a.setIcon(div_icon_4cfcfa3f630a5d780980cb7e91b52ae2);
+        
+    
+        var popup_4219a093048e9dbad1936fbaed5cb820 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_bacc821135317583b31157098974e6ba = $(`<div id="html_bacc821135317583b31157098974e6ba" style="width: 100.0%; height: 100.0%;"><b>BANQUE POPULAIRE</b><br>Latitude: 32.2311881<br>Longitude: -8.5564831</div>`)[0];
+                popup_4219a093048e9dbad1936fbaed5cb820.setContent(html_bacc821135317583b31157098974e6ba);
+            
+        
+
+        marker_370c037f2e310ef2825c116636f1098a.bindPopup(popup_4219a093048e9dbad1936fbaed5cb820)
+        ;
+
+        
+    
+    
+            var marker_b77c006208ad7b9da599e2515cf4ddb7 = L.marker(
+                [32.2311881, -8.5564831],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_a71c15ac7a151ae95a27fd992a870672 = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-info-circle\" style=\"color: gray; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_b77c006208ad7b9da599e2515cf4ddb7.setIcon(div_icon_a71c15ac7a151ae95a27fd992a870672);
+        
+    
+        var popup_a5a81ff4e1a9a55bc7f2c651d5c6adf8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_86bc270cdd5d7e0128a23b667aaea829 = $(`<div id="html_86bc270cdd5d7e0128a23b667aaea829" style="width: 100.0%; height: 100.0%;"><b>BMCE</b><br>Latitude: 32.2311881<br>Longitude: -8.5564831</div>`)[0];
+                popup_a5a81ff4e1a9a55bc7f2c651d5c6adf8.setContent(html_86bc270cdd5d7e0128a23b667aaea829);
+            
+        
+
+        marker_b77c006208ad7b9da599e2515cf4ddb7.bindPopup(popup_a5a81ff4e1a9a55bc7f2c651d5c6adf8)
+        ;
+
+        
+    
+    
+            var marker_832b435eaea9b201aee10225844ab76b = L.marker(
+                [32.2311881, -8.5564831],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_81ddd7c46040a3dac63ede82d8f1e4da = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-info-circle\" style=\"color: gray; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_832b435eaea9b201aee10225844ab76b.setIcon(div_icon_81ddd7c46040a3dac63ede82d8f1e4da);
+        
+    
+        var popup_4f910ec56fc0f2bfe57877ddee090e0f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8be5df0e7d1a86e4d56f8ae98ea59e66 = $(`<div id="html_8be5df0e7d1a86e4d56f8ae98ea59e66" style="width: 100.0%; height: 100.0%;"><b>Attijariwafa bank</b><br>Latitude: 32.2311881<br>Longitude: -8.5564831</div>`)[0];
+                popup_4f910ec56fc0f2bfe57877ddee090e0f.setContent(html_8be5df0e7d1a86e4d56f8ae98ea59e66);
+            
+        
+
+        marker_832b435eaea9b201aee10225844ab76b.bindPopup(popup_4f910ec56fc0f2bfe57877ddee090e0f)
+        ;
+
+        
+    
+    
+            var marker_25de7127f5480365ccc881b69e0d562b = L.marker(
+                [32.2311881, -8.5564831],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_6deabc5fef17e7ada2daa170ee9db597 = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-info-circle\" style=\"color: gray; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_25de7127f5480365ccc881b69e0d562b.setIcon(div_icon_6deabc5fef17e7ada2daa170ee9db597);
+        
+    
+        var popup_e6f850ee38cba798c1959e63192f7b45 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6ee6a4dfefdb7d0abc77ec64ecb3b7ff = $(`<div id="html_6ee6a4dfefdb7d0abc77ec64ecb3b7ff" style="width: 100.0%; height: 100.0%;"><b>wafacash</b><br>Latitude: 32.2311881<br>Longitude: -8.5564831</div>`)[0];
+                popup_e6f850ee38cba798c1959e63192f7b45.setContent(html_6ee6a4dfefdb7d0abc77ec64ecb3b7ff);
+            
+        
+
+        marker_25de7127f5480365ccc881b69e0d562b.bindPopup(popup_e6f850ee38cba798c1959e63192f7b45)
+        ;
+
+        
+    
+    
+            var marker_cd4f21761d3c402036fedf07b0f5b2c4 = L.marker(
+                [32.247460450000005, -8.53456296286046],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_cb3ad54577ae09d2bf487a7ca8ac2d01 = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-train\" style=\"color: red; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_cd4f21761d3c402036fedf07b0f5b2c4.setIcon(div_icon_cb3ad54577ae09d2bf487a7ca8ac2d01);
+        
+    
+        var popup_bc5e814786e9a23594e221866489af08 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_3a9a37e2ff91b8e644661d3978bc52fc = $(`<div id="html_3a9a37e2ff91b8e644661d3978bc52fc" style="width: 100.0%; height: 100.0%;"><b>Gare de Youssoufia</b><br>Latitude: 32.247460450000005<br>Longitude: -8.53456296286046</div>`)[0];
+                popup_bc5e814786e9a23594e221866489af08.setContent(html_3a9a37e2ff91b8e644661d3978bc52fc);
+            
+        
+
+        marker_cd4f21761d3c402036fedf07b0f5b2c4.bindPopup(popup_bc5e814786e9a23594e221866489af08)
+        ;
+
+        
+    
+    
+            var marker_d0602462a815c3351fb75fb338673557 = L.marker(
+                [35.8725528, 2.024563],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_a362cc6fb2f938dc76a8413796200163 = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-train\" style=\"color: red; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_d0602462a815c3351fb75fb338673557.setIcon(div_icon_a362cc6fb2f938dc76a8413796200163);
+        
+    
+        var popup_d3bd38e557a8c905a1221a7758bd88b2 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_51c5e34317fcfd4cbbeca71a5391e5a5 = $(`<div id="html_51c5e34317fcfd4cbbeca71a5391e5a5" style="width: 100.0%; height: 100.0%;"><b>Gare routiere Theniet El Had</b><br>Latitude: 35.8725528<br>Longitude: 2.024563</div>`)[0];
+                popup_d3bd38e557a8c905a1221a7758bd88b2.setContent(html_51c5e34317fcfd4cbbeca71a5391e5a5);
+            
+        
+
+        marker_d0602462a815c3351fb75fb338673557.bindPopup(popup_d3bd38e557a8c905a1221a7758bd88b2)
+        ;
+
+        
+    
+    
+            var marker_f8aa3da85b914bcd500471f17082777a = L.marker(
+                [33.57343805, -7.587580355715018],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_feb575e5d602cf906ea1bc2ecd3df7be = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-train\" style=\"color: red; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_f8aa3da85b914bcd500471f17082777a.setIcon(div_icon_feb575e5d602cf906ea1bc2ecd3df7be);
+        
+    
+        var popup_81ec1b65ddab2079be01351de197ce3d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_19e03dfa4ceba805149e682e77215f79 = $(`<div id="html_19e03dfa4ceba805149e682e77215f79" style="width: 100.0%; height: 100.0%;"><b>Casabus Gare Routiere Ouled Ziane</b><br>Latitude: 33.57343805<br>Longitude: -7.587580355715018</div>`)[0];
+                popup_81ec1b65ddab2079be01351de197ce3d.setContent(html_19e03dfa4ceba805149e682e77215f79);
+            
+        
+
+        marker_f8aa3da85b914bcd500471f17082777a.bindPopup(popup_81ec1b65ddab2079be01351de197ce3d)
+        ;
+
+        
+    
+    
+            var marker_aa8fe79a1cc3d1fbe5ad82c9d850a920 = L.marker(
+                [33.5746156, -7.5898303],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_11e727f3d1fcc9089a08da484c04a819 = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-train\" style=\"color: red; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_aa8fe79a1cc3d1fbe5ad82c9d850a920.setIcon(div_icon_11e727f3d1fcc9089a08da484c04a819);
+        
+    
+        var popup_e7d8ddc865a3f80804143899bcfdbe9f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a7a2b0b37d2b9f0acd34f50e0629fa54 = $(`<div id="html_a7a2b0b37d2b9f0acd34f50e0629fa54" style="width: 100.0%; height: 100.0%;"><b>Police Gare Routiere</b><br>Latitude: 33.5746156<br>Longitude: -7.5898303</div>`)[0];
+                popup_e7d8ddc865a3f80804143899bcfdbe9f.setContent(html_a7a2b0b37d2b9f0acd34f50e0629fa54);
+            
+        
+
+        marker_aa8fe79a1cc3d1fbe5ad82c9d850a920.bindPopup(popup_e7d8ddc865a3f80804143899bcfdbe9f)
+        ;
+
+        
+    
+    
+            var marker_a802f203c0126d6d572ec86ce507b481 = L.marker(
+                [33.9891567, -6.823975059229513],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_e4c301a2a44ff1fd2bf708e272b413ca = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-info-circle\" style=\"color: gray; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_a802f203c0126d6d572ec86ce507b481.setIcon(div_icon_e4c301a2a44ff1fd2bf708e272b413ca);
+        
+    
+        var popup_59179c231dcf8f3426fde7ae7cee8042 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8c5fdefb946b6bddd2f4226a0f3be7e0 = $(`<div id="html_8c5fdefb946b6bddd2f4226a0f3be7e0" style="width: 100.0%; height: 100.0%;"><b>Maroc</b><br>Latitude: 33.9891567<br>Longitude: -6.823975059229513</div>`)[0];
+                popup_59179c231dcf8f3426fde7ae7cee8042.setContent(html_8c5fdefb946b6bddd2f4226a0f3be7e0);
+            
+        
+
+        marker_a802f203c0126d6d572ec86ce507b481.bindPopup(popup_59179c231dcf8f3426fde7ae7cee8042)
+        ;
+
+        
+    
+    
+            var marker_796df2325331b4b0d1507e300435e112 = L.marker(
+                [32.2552809, -8.5336693],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_742910297475cfd33f7614509e50c65a = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-hospital\" style=\"color: green; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_796df2325331b4b0d1507e300435e112.setIcon(div_icon_742910297475cfd33f7614509e50c65a);
+        
+    
+        var popup_a9072c095450e84fe82445a626ea20f1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_004689c25ca22439b53fa8edb39719ff = $(`<div id="html_004689c25ca22439b53fa8edb39719ff" style="width: 100.0%; height: 100.0%;"><b>Pharmacie Chefchaouni</b><br>Latitude: 32.2552809<br>Longitude: -8.5336693</div>`)[0];
+                popup_a9072c095450e84fe82445a626ea20f1.setContent(html_004689c25ca22439b53fa8edb39719ff);
+            
+        
+
+        marker_796df2325331b4b0d1507e300435e112.bindPopup(popup_a9072c095450e84fe82445a626ea20f1)
+        ;
+
+        
+    
+    
+            var marker_6317c0c77f33b9617d191f678639388b = L.marker(
+                [32.2418627, -8.5354636],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_4ae33becfa6d5fcdddbede5d8be3e301 = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-hospital\" style=\"color: green; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_6317c0c77f33b9617d191f678639388b.setIcon(div_icon_4ae33becfa6d5fcdddbede5d8be3e301);
+        
+    
+        var popup_49358fc34f2873904f07e75f3dc6158f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a0d7f7332b4b10c800220d3e547ae92d = $(`<div id="html_a0d7f7332b4b10c800220d3e547ae92d" style="width: 100.0%; height: 100.0%;"><b>Pharmacie Ahmar</b><br>Latitude: 32.2418627<br>Longitude: -8.5354636</div>`)[0];
+                popup_49358fc34f2873904f07e75f3dc6158f.setContent(html_a0d7f7332b4b10c800220d3e547ae92d);
+            
+        
+
+        marker_6317c0c77f33b9617d191f678639388b.bindPopup(popup_49358fc34f2873904f07e75f3dc6158f)
+        ;
+
+        
+    
+    
+            var marker_fd98fc697796dff90739a282d80911d0 = L.marker(
+                [32.2458394, -8.5341124],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_51dbeb8a735e8530721ba8566f892673 = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-hospital\" style=\"color: green; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_fd98fc697796dff90739a282d80911d0.setIcon(div_icon_51dbeb8a735e8530721ba8566f892673);
+        
+    
+        var popup_424be0eefb583bf065a88bd9f8b62342 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d958728db638b99a39e7452fe476c39f = $(`<div id="html_d958728db638b99a39e7452fe476c39f" style="width: 100.0%; height: 100.0%;"><b>Pharmacie Al Ouma</b><br>Latitude: 32.2458394<br>Longitude: -8.5341124</div>`)[0];
+                popup_424be0eefb583bf065a88bd9f8b62342.setContent(html_d958728db638b99a39e7452fe476c39f);
+            
+        
+
+        marker_fd98fc697796dff90739a282d80911d0.bindPopup(popup_424be0eefb583bf065a88bd9f8b62342)
+        ;
+
+        
+    
+    
+            var marker_483151610bba2796dfc0d7850db34941 = L.marker(
+                [32.2427264, -8.5403043],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_662980b867978baee1f3b09b2c73d22d = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-hospital\" style=\"color: green; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_483151610bba2796dfc0d7850db34941.setIcon(div_icon_662980b867978baee1f3b09b2c73d22d);
+        
+    
+        var popup_17eae56ab6635c53d9fd29d1a18b80b8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_3229d449f0943f4d09d9ca93e279baf0 = $(`<div id="html_3229d449f0943f4d09d9ca93e279baf0" style="width: 100.0%; height: 100.0%;"><b>Pharmacie Inas</b><br>Latitude: 32.2427264<br>Longitude: -8.5403043</div>`)[0];
+                popup_17eae56ab6635c53d9fd29d1a18b80b8.setContent(html_3229d449f0943f4d09d9ca93e279baf0);
+            
+        
+
+        marker_483151610bba2796dfc0d7850db34941.bindPopup(popup_17eae56ab6635c53d9fd29d1a18b80b8)
+        ;
+
+        
+    
+    
+            var marker_9ad263ed11b0479cf37f2ae77b730283 = L.marker(
+                [32.2446437, -8.5345939],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_8e02370595a9ddeecd021ace2f2f8dff = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-hospital\" style=\"color: green; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_9ad263ed11b0479cf37f2ae77b730283.setIcon(div_icon_8e02370595a9ddeecd021ace2f2f8dff);
+        
+    
+        var popup_dff480e63ff16105dd05e35d34dff27d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d4fff522d59ac6d7e88a5d341be0dc82 = $(`<div id="html_d4fff522d59ac6d7e88a5d341be0dc82" style="width: 100.0%; height: 100.0%;"><b>Pharmacie Minicipalite</b><br>Latitude: 32.2446437<br>Longitude: -8.5345939</div>`)[0];
+                popup_dff480e63ff16105dd05e35d34dff27d.setContent(html_d4fff522d59ac6d7e88a5d341be0dc82);
+            
+        
+
+        marker_9ad263ed11b0479cf37f2ae77b730283.bindPopup(popup_dff480e63ff16105dd05e35d34dff27d)
+        ;
+
+        
+    
+    
+            var marker_de3337a2ac51e1db96eddade37fe2cbb = L.marker(
+                [32.2484544, -8.5234343],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_e796beee71b895428abe564889394e93 = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-hospital\" style=\"color: green; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_de3337a2ac51e1db96eddade37fe2cbb.setIcon(div_icon_e796beee71b895428abe564889394e93);
+        
+    
+        var popup_7e69e86f8768c8f8854c97aac9330c41 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e8f73366c924172cc3dbc4b23fdce4d2 = $(`<div id="html_e8f73366c924172cc3dbc4b23fdce4d2" style="width: 100.0%; height: 100.0%;"><b>Pharmacie Zaid</b><br>Latitude: 32.2484544<br>Longitude: -8.5234343</div>`)[0];
+                popup_7e69e86f8768c8f8854c97aac9330c41.setContent(html_e8f73366c924172cc3dbc4b23fdce4d2);
+            
+        
+
+        marker_de3337a2ac51e1db96eddade37fe2cbb.bindPopup(popup_7e69e86f8768c8f8854c97aac9330c41)
+        ;
+
+        
+    
+    
+            var marker_4036c9cbaa75499398144b8cfefe643c = L.marker(
+                [32.2446004, -8.5317972],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_8f59ef446d3b590c8229b0fe062cc766 = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-hospital\" style=\"color: green; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_4036c9cbaa75499398144b8cfefe643c.setIcon(div_icon_8f59ef446d3b590c8229b0fe062cc766);
+        
+    
+        var popup_64d9aad33411ba4550bbe79927f44e9e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9ac08730e5c9ed284b6657a9909dc5cc = $(`<div id="html_9ac08730e5c9ed284b6657a9909dc5cc" style="width: 100.0%; height: 100.0%;"><b>Pharmacie Orphelinat</b><br>Latitude: 32.2446004<br>Longitude: -8.5317972</div>`)[0];
+                popup_64d9aad33411ba4550bbe79927f44e9e.setContent(html_9ac08730e5c9ed284b6657a9909dc5cc);
+            
+        
+
+        marker_4036c9cbaa75499398144b8cfefe643c.bindPopup(popup_64d9aad33411ba4550bbe79927f44e9e)
+        ;
+
+        
+    
+    
+            var marker_2d1a7500ff9051bc54fb4f8a30f58262 = L.marker(
+                [32.2491676, -8.539346],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_3168e1a92d400b7d82358627ab984de2 = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-hospital\" style=\"color: green; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_2d1a7500ff9051bc54fb4f8a30f58262.setIcon(div_icon_3168e1a92d400b7d82358627ab984de2);
+        
+    
+        var popup_497accca50168b55e788d278aa67f951 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9e12c9e7a9c1451ed3339a9122426de2 = $(`<div id="html_9e12c9e7a9c1451ed3339a9122426de2" style="width: 100.0%; height: 100.0%;"><b>Pharmacie Zaytouna</b><br>Latitude: 32.2491676<br>Longitude: -8.539346</div>`)[0];
+                popup_497accca50168b55e788d278aa67f951.setContent(html_9e12c9e7a9c1451ed3339a9122426de2);
+            
+        
+
+        marker_2d1a7500ff9051bc54fb4f8a30f58262.bindPopup(popup_497accca50168b55e788d278aa67f951)
+        ;
+
+        
+    
+    
+            var marker_9203ca1a7f32a248c97f338769ac5c6d = L.marker(
+                [32.2538836, -8.5358955],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_2ed49f3dc23fb56ecd4eced7a643cfbf = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-hospital\" style=\"color: green; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_9203ca1a7f32a248c97f338769ac5c6d.setIcon(div_icon_2ed49f3dc23fb56ecd4eced7a643cfbf);
+        
+    
+        var popup_913407b81fd480d1597b0137099584d4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_feb69c6c8235d62ec65e29e155fa6d55 = $(`<div id="html_feb69c6c8235d62ec65e29e155fa6d55" style="width: 100.0%; height: 100.0%;"><b>Pharmacie Al Qods</b><br>Latitude: 32.2538836<br>Longitude: -8.5358955</div>`)[0];
+                popup_913407b81fd480d1597b0137099584d4.setContent(html_feb69c6c8235d62ec65e29e155fa6d55);
+            
+        
+
+        marker_9203ca1a7f32a248c97f338769ac5c6d.bindPopup(popup_913407b81fd480d1597b0137099584d4)
+        ;
+
+        
+    
+    
+            var marker_a3599e0fb85ca618f034fd33d9f9d4c8 = L.marker(
+                [32.237092, -8.5326451],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_1e0376231a6d309361139afa14c104b1 = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-hospital\" style=\"color: green; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_a3599e0fb85ca618f034fd33d9f9d4c8.setIcon(div_icon_1e0376231a6d309361139afa14c104b1);
+        
+    
+        var popup_acf5269f679df7ac3f4fa28f46c5b362 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ed615a1bb3e93bfff7d753b6f9d69389 = $(`<div id="html_ed615a1bb3e93bfff7d753b6f9d69389" style="width: 100.0%; height: 100.0%;"><b>Pharmacie Annour</b><br>Latitude: 32.237092<br>Longitude: -8.5326451</div>`)[0];
+                popup_acf5269f679df7ac3f4fa28f46c5b362.setContent(html_ed615a1bb3e93bfff7d753b6f9d69389);
+            
+        
+
+        marker_a3599e0fb85ca618f034fd33d9f9d4c8.bindPopup(popup_acf5269f679df7ac3f4fa28f46c5b362)
+        ;
+
+        
+    
+    
+            var marker_0e76ec91743435199fc8bb51859d8ec5 = L.marker(
+                [35.9484859, 2.1103831],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_9ed877df354d7d234fcacf9f29c68114 = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-info-circle\" style=\"color: gray; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_0e76ec91743435199fc8bb51859d8ec5.setIcon(div_icon_9ed877df354d7d234fcacf9f29c68114);
+        
+    
+        var popup_050e6a977b57230080cd21e75cfcb251 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_834a345493fc67bd6dc2d0fe34158903 = $(`<div id="html_834a345493fc67bd6dc2d0fe34158903" style="width: 100.0%; height: 100.0%;"><b>Hay Ouali Mokhtar</b><br>Latitude: 35.9484859<br>Longitude: 2.1103831</div>`)[0];
+                popup_050e6a977b57230080cd21e75cfcb251.setContent(html_834a345493fc67bd6dc2d0fe34158903);
+            
+        
+
+        marker_0e76ec91743435199fc8bb51859d8ec5.bindPopup(popup_050e6a977b57230080cd21e75cfcb251)
+        ;
+
+        
+    
+    
+            var marker_5303d2bb5042db6d4e81b4ab832c71b8 = L.marker(
+                [33.9869881, -6.8252108],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_ffea9c55f8884dd587e307106bf79b5f = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-info-circle\" style=\"color: gray; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_5303d2bb5042db6d4e81b4ab832c71b8.setIcon(div_icon_ffea9c55f8884dd587e307106bf79b5f);
+        
+    
+        var popup_28107912b074aa1940d84332fd82789e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8f061b47cec30957efe2c836959e57b9 = $(`<div id="html_8f061b47cec30957efe2c836959e57b9" style="width: 100.0%; height: 100.0%;"><b>Hay Saada</b><br>Latitude: 33.9869881<br>Longitude: -6.8252108</div>`)[0];
+                popup_28107912b074aa1940d84332fd82789e.setContent(html_8f061b47cec30957efe2c836959e57b9);
+            
+        
+
+        marker_5303d2bb5042db6d4e81b4ab832c71b8.bindPopup(popup_28107912b074aa1940d84332fd82789e)
+        ;
+
+        
+    
+    
+            var marker_e394bfca7df7b827ce9f16a94dd74ee7 = L.marker(
+                [33.5750029, -7.5903201],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_68aa67cee51b4dc1280d0dd02080f6ad = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-info-circle\" style=\"color: gray; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_e394bfca7df7b827ce9f16a94dd74ee7.setIcon(div_icon_68aa67cee51b4dc1280d0dd02080f6ad);
+        
+    
+        var popup_b872097a8f4ccecc119785b1f269acb8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b7726226df12a27b38b57ebe34d14967 = $(`<div id="html_b7726226df12a27b38b57ebe34d14967" style="width: 100.0%; height: 100.0%;"><b>Rue Youssoufia</b><br>Latitude: 33.5750029<br>Longitude: -7.5903201</div>`)[0];
+                popup_b872097a8f4ccecc119785b1f269acb8.setContent(html_b7726226df12a27b38b57ebe34d14967);
+            
+        
+
+        marker_e394bfca7df7b827ce9f16a94dd74ee7.bindPopup(popup_b872097a8f4ccecc119785b1f269acb8)
+        ;
+
+        
+    
+    
+            var marker_406e494f752477549929296d87c227f3 = L.marker(
+                [32.9980786, -7.6096755],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_0b246bbbdfe81e3fb3279edb1390eac1 = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-info-circle\" style=\"color: gray; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_406e494f752477549929296d87c227f3.setIcon(div_icon_0b246bbbdfe81e3fb3279edb1390eac1);
+        
+    
+        var popup_2526ac1f3e792930749bb493bfdf2aab = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ccba9838eed033c2789381178d99e008 = $(`<div id="html_ccba9838eed033c2789381178d99e008" style="width: 100.0%; height: 100.0%;"><b>Rue Youssoufia</b><br>Latitude: 32.9980786<br>Longitude: -7.6096755</div>`)[0];
+                popup_2526ac1f3e792930749bb493bfdf2aab.setContent(html_ccba9838eed033c2789381178d99e008);
+            
+        
+
+        marker_406e494f752477549929296d87c227f3.bindPopup(popup_2526ac1f3e792930749bb493bfdf2aab)
+        ;
+
+        
+    
+    
+            var marker_5cdc8dc561f7f4a5b449d1fad050ecd6 = L.marker(
+                [30.4390063, -9.5602542],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_f1654d468a9a2e526514dfc6caff12c2 = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-info-circle\" style=\"color: gray; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_5cdc8dc561f7f4a5b449d1fad050ecd6.setIcon(div_icon_f1654d468a9a2e526514dfc6caff12c2);
+        
+    
+        var popup_e87c730907fc1abcc4c1550f90172aa7 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d00c889f94d7cf3415db3d594c279e91 = $(`<div id="html_d00c889f94d7cf3415db3d594c279e91" style="width: 100.0%; height: 100.0%;"><b>Avenue Youssoufia</b><br>Latitude: 30.4390063<br>Longitude: -9.5602542</div>`)[0];
+                popup_e87c730907fc1abcc4c1550f90172aa7.setContent(html_d00c889f94d7cf3415db3d594c279e91);
+            
+        
+
+        marker_5cdc8dc561f7f4a5b449d1fad050ecd6.bindPopup(popup_e87c730907fc1abcc4c1550f90172aa7)
+        ;
+
+        
+    
+    
+            var marker_29b62f7445dff63b42bbb104177a1a30 = L.marker(
+                [32.0749202, -8.6303306],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_adcf4f5cdb7df54f39928199dcbc9161 = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-hospital\" style=\"color: green; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_29b62f7445dff63b42bbb104177a1a30.setIcon(div_icon_adcf4f5cdb7df54f39928199dcbc9161);
+        
+    
+        var popup_5848069897f677faf2cd3a7f13bba8dd = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_98e4959360ca9c131c0089e894456d0b = $(`<div id="html_98e4959360ca9c131c0089e894456d0b" style="width: 100.0%; height: 100.0%;"><b>Pharmacie Hay Essaada</b><br>Latitude: 32.0749202<br>Longitude: -8.6303306</div>`)[0];
+                popup_5848069897f677faf2cd3a7f13bba8dd.setContent(html_98e4959360ca9c131c0089e894456d0b);
+            
+        
+
+        marker_29b62f7445dff63b42bbb104177a1a30.bindPopup(popup_5848069897f677faf2cd3a7f13bba8dd)
+        ;
+
+        
+    
+    
+            var marker_f5e4231f8a53b5bddb57de09f80d85d9 = L.marker(
+                [33.97524585, -6.820422923913227],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_5989218971c947215b2a1d854930221b = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-info-circle\" style=\"color: gray; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_f5e4231f8a53b5bddb57de09f80d85d9.setIcon(div_icon_5989218971c947215b2a1d854930221b);
+        
+    
+        var popup_4306956c0340cb8857ad06023fc368f0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1f83f8507d58394a70fe283d26dcbe4a = $(`<div id="html_1f83f8507d58394a70fe283d26dcbe4a" style="width: 100.0%; height: 100.0%;"><b>ISTA Hay Ennahda</b><br>Latitude: 33.97524585<br>Longitude: -6.820422923913227</div>`)[0];
+                popup_4306956c0340cb8857ad06023fc368f0.setContent(html_1f83f8507d58394a70fe283d26dcbe4a);
+            
+        
+
+        marker_f5e4231f8a53b5bddb57de09f80d85d9.bindPopup(popup_4306956c0340cb8857ad06023fc368f0)
+        ;
+
+        
+    
+    
+            var marker_b8e2e04930e94d5ea7e5e8135b3ca43d = L.marker(
+                [33.9790992, -6.8206029],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_2641059b6280b26c792582fe136b41ca = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-info-circle\" style=\"color: gray; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_b8e2e04930e94d5ea7e5e8135b3ca43d.setIcon(div_icon_2641059b6280b26c792582fe136b41ca);
+        
+    
+        var popup_c8ee676969956f6d670acf0ea846808a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_67ec9714e0296f184b1466c47f834a82 = $(`<div id="html_67ec9714e0296f184b1466c47f834a82" style="width: 100.0%; height: 100.0%;"><b>Hay takadoum</b><br>Latitude: 33.9790992<br>Longitude: -6.8206029</div>`)[0];
+                popup_c8ee676969956f6d670acf0ea846808a.setContent(html_67ec9714e0296f184b1466c47f834a82);
+            
+        
+
+        marker_b8e2e04930e94d5ea7e5e8135b3ca43d.bindPopup(popup_c8ee676969956f6d670acf0ea846808a)
+        ;
+
+        
+    
+    
+            var marker_eb914b85d148668103a655613f5e5320 = L.marker(
+                [33.9740312, -6.8217098],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_6bdc3d2bfed95925f818a48141567f83 = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-info-circle\" style=\"color: gray; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_eb914b85d148668103a655613f5e5320.setIcon(div_icon_6bdc3d2bfed95925f818a48141567f83);
+        
+    
+        var popup_0bc01c9d6559a7a3fcafc01c5eb90c79 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7514870b84e778c912974b53b67d922d = $(`<div id="html_7514870b84e778c912974b53b67d922d" style="width: 100.0%; height: 100.0%;"><b>Hay Ennahda</b><br>Latitude: 33.9740312<br>Longitude: -6.8217098</div>`)[0];
+                popup_0bc01c9d6559a7a3fcafc01c5eb90c79.setContent(html_7514870b84e778c912974b53b67d922d);
+            
+        
+
+        marker_eb914b85d148668103a655613f5e5320.bindPopup(popup_0bc01c9d6559a7a3fcafc01c5eb90c79)
+        ;
+
+        
+    
+    
+            var marker_a4bdc886e2732eec36beac43401c6c52 = L.marker(
+                [33.9752571, -6.8219031],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_f02df932b17d37ce585f59073863026f = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-info-circle\" style=\"color: gray; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_a4bdc886e2732eec36beac43401c6c52.setIcon(div_icon_f02df932b17d37ce585f59073863026f);
+        
+    
+        var popup_05699c28434e674a68df54dd359386c8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c2c94f9343a120261a8e40fa7b36c873 = $(`<div id="html_c2c94f9343a120261a8e40fa7b36c873" style="width: 100.0%; height: 100.0%;"><b>ISTA Hay Ennahda</b><br>Latitude: 33.9752571<br>Longitude: -6.8219031</div>`)[0];
+                popup_05699c28434e674a68df54dd359386c8.setContent(html_c2c94f9343a120261a8e40fa7b36c873);
+            
+        
+
+        marker_a4bdc886e2732eec36beac43401c6c52.bindPopup(popup_05699c28434e674a68df54dd359386c8)
+        ;
+
+        
+    
+    
+            var marker_16047acdb5711e962673c26d75805488 = L.marker(
+                [33.989784900000004, -6.815513721577478],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_fc4540a840fe49ca2b7361aa00a21137 = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-info-circle\" style=\"color: gray; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_16047acdb5711e962673c26d75805488.setIcon(div_icon_fc4540a840fe49ca2b7361aa00a21137);
+        
+    
+        var popup_3e0908961992f711439f4f414bee876e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0e729eaa377c4c96ef930ef5b34c38ab = $(`<div id="html_0e729eaa377c4c96ef930ef5b34c38ab" style="width: 100.0%; height: 100.0%;"><b>Ecole Al Khawarizmi</b><br>Latitude: 33.989784900000004<br>Longitude: -6.815513721577478</div>`)[0];
+                popup_3e0908961992f711439f4f414bee876e.setContent(html_0e729eaa377c4c96ef930ef5b34c38ab);
+            
+        
+
+        marker_16047acdb5711e962673c26d75805488.bindPopup(popup_3e0908961992f711439f4f414bee876e)
+        ;
+
+        
+    
+    
+            var marker_10f82d87f2d6559574ca720c919621d9 = L.marker(
+                [33.970487, -6.817459044714192],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_252c89be66f051880c69819587ae34ca = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-info-circle\" style=\"color: gray; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_10f82d87f2d6559574ca720c919621d9.setIcon(div_icon_252c89be66f051880c69819587ae34ca);
+        
+    
+        var popup_faf750a94a0e01a3c5dd2fb0d4081aea = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9915a72eef2693c3a721180a9a3f570d = $(`<div id="html_9915a72eef2693c3a721180a9a3f570d" style="width: 100.0%; height: 100.0%;"><b>Terrain de foot</b><br>Latitude: 33.970487<br>Longitude: -6.817459044714192</div>`)[0];
+                popup_faf750a94a0e01a3c5dd2fb0d4081aea.setContent(html_9915a72eef2693c3a721180a9a3f570d);
+            
+        
+
+        marker_10f82d87f2d6559574ca720c919621d9.bindPopup(popup_faf750a94a0e01a3c5dd2fb0d4081aea)
+        ;
+
+        
+    
+    
+            var marker_df31e03e42827c97be72e588ae67bfc5 = L.marker(
+                [32.2311881, -8.5564831],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_5a049f3be5c9badf091c6dd4665440bb = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-info-circle\" style=\"color: gray; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_df31e03e42827c97be72e588ae67bfc5.setIcon(div_icon_5a049f3be5c9badf091c6dd4665440bb);
+        
+    
+        var popup_35bd72641d3674b4fc3be17392e5309c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_506dfafbf9a0c15dc4ec1eb529360780 = $(`<div id="html_506dfafbf9a0c15dc4ec1eb529360780" style="width: 100.0%; height: 100.0%;"><b>hospital lalla hassna</b><br>Latitude: 32.2311881<br>Longitude: -8.5564831</div>`)[0];
+                popup_35bd72641d3674b4fc3be17392e5309c.setContent(html_506dfafbf9a0c15dc4ec1eb529360780);
+            
+        
+
+        marker_df31e03e42827c97be72e588ae67bfc5.bindPopup(popup_35bd72641d3674b4fc3be17392e5309c)
+        ;
+
+        
+    
+    
+            var marker_12f21dde0df204f2bd1106870f19dd36 = L.marker(
+                [32.2585369, -8.5393031],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_ce8ba4ee6ccda074b370dbf36c8a16db = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-mosque\" style=\"color: orange; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_12f21dde0df204f2bd1106870f19dd36.setIcon(div_icon_ce8ba4ee6ccda074b370dbf36c8a16db);
+        
+    
+        var popup_38a5d387715d6bd76a3acde1826ec01a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1c03d589232b89bd89d989091e7b9897 = $(`<div id="html_1c03d589232b89bd89d989091e7b9897" style="width: 100.0%; height: 100.0%;"><b>masjid niour</b><br>Latitude: 32.2585369<br>Longitude: -8.5393031</div>`)[0];
+                popup_38a5d387715d6bd76a3acde1826ec01a.setContent(html_1c03d589232b89bd89d989091e7b9897);
+            
+        
+
+        marker_12f21dde0df204f2bd1106870f19dd36.bindPopup(popup_38a5d387715d6bd76a3acde1826ec01a)
+        ;
+
+        
+    
+    
+            var marker_d0abf0c39af4b18055b09e90e1568dbb = L.marker(
+                [32.2474519, -8.5305056],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_24bb80ddb0bfc925f9dcbb6cf558c3d0 = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-graduation-cap\" style=\"color: blue; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_d0abf0c39af4b18055b09e90e1568dbb.setIcon(div_icon_24bb80ddb0bfc925f9dcbb6cf558c3d0);
+        
+    
+        var popup_d9c7617136d2a37b06ca931e8806e318 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9cf01ebcaab3f0d190d0465495c61967 = $(`<div id="html_9cf01ebcaab3f0d190d0465495c61967" style="width: 100.0%; height: 100.0%;"><b>Youcode</b><br>Latitude: 32.2474519<br>Longitude: -8.5305056</div>`)[0];
+                popup_d9c7617136d2a37b06ca931e8806e318.setContent(html_9cf01ebcaab3f0d190d0465495c61967);
+            
+        
+
+        marker_d0abf0c39af4b18055b09e90e1568dbb.bindPopup(popup_d9c7617136d2a37b06ca931e8806e318)
+        ;
+
+        
+    
+    
+            var marker_212af8b6552e06ad836f42a1b182b7dd = L.marker(
+                [32.2405827, -8.5544765],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_b4e967b8cfdbea172c2109995c8e0863 = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-mosque\" style=\"color: orange; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_212af8b6552e06ad836f42a1b182b7dd.setIcon(div_icon_b4e967b8cfdbea172c2109995c8e0863);
+        
+    
+        var popup_52d03eb213932d53129595574695c5e1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4d2d7746345dffbf9e863b7f42d3de10 = $(`<div id="html_4d2d7746345dffbf9e863b7f42d3de10" style="width: 100.0%; height: 100.0%;"><b>masjid Al Firdaouss</b><br>Latitude: 32.2405827<br>Longitude: -8.5544765</div>`)[0];
+                popup_52d03eb213932d53129595574695c5e1.setContent(html_4d2d7746345dffbf9e863b7f42d3de10);
+            
+        
+
+        marker_212af8b6552e06ad836f42a1b182b7dd.bindPopup(popup_52d03eb213932d53129595574695c5e1)
+        ;
+
+        
+    
+    
+            var marker_fff72cff40d8e627fe06f8c185924bcd = L.marker(
+                [32.2387886, -8.5435081],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_e68f7b4226b8fc11a413043bc02dab09 = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-shopping-basket\" style=\"color: purple; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_fff72cff40d8e627fe06f8c185924bcd.setIcon(div_icon_e68f7b4226b8fc11a413043bc02dab09);
+        
+    
+        var popup_aa1e82800cfa5db499f729a96031f544 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9831d8f2fd43f9c77382efc5702eec7e = $(`<div id="html_9831d8f2fd43f9c77382efc5702eec7e" style="width: 100.0%; height: 100.0%;"><b>souk baladi</b><br>Latitude: 32.2387886<br>Longitude: -8.5435081</div>`)[0];
+                popup_aa1e82800cfa5db499f729a96031f544.setContent(html_9831d8f2fd43f9c77382efc5702eec7e);
+            
+        
+
+        marker_fff72cff40d8e627fe06f8c185924bcd.bindPopup(popup_aa1e82800cfa5db499f729a96031f544)
+        ;
+
+        
+    
+    
+            var marker_13d90505b381a7624f27ecd956a89d29 = L.marker(
+                [32.2445097, -8.539445],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_e4bec1594c957df681a41e57b55be718 = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-hotel\" style=\"color: brown; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_13d90505b381a7624f27ecd956a89d29.setIcon(div_icon_e4bec1594c957df681a41e57b55be718);
+        
+    
+        var popup_aa675a8c48f8a1a262b77a1d09bfb641 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_3eb113564765b99d806f412198d0bae2 = $(`<div id="html_3eb113564765b99d806f412198d0bae2" style="width: 100.0%; height: 100.0%;"><b>Hôtel de Youssoufia</b><br>Latitude: 32.2445097<br>Longitude: -8.539445</div>`)[0];
+                popup_aa675a8c48f8a1a262b77a1d09bfb641.setContent(html_3eb113564765b99d806f412198d0bae2);
+            
+        
+
+        marker_13d90505b381a7624f27ecd956a89d29.bindPopup(popup_aa675a8c48f8a1a262b77a1d09bfb641)
+        ;
+
+        
+    
+    
+            var marker_32ba615e744afa260a86b513ab0fd9f4 = L.marker(
+                [32.2450427, -8.5314156],
+                {}
+            ).addTo(marker_cluster_f8b7594f731f8a47fddeaffce3efa669);
+        
+    
+            var div_icon_1f1f5bd8b80ff93816d9a1df69a9fb2d = L.divIcon({"className": "empty", "html": "\u003ci class=\"fa fa-tree\" style=\"color: #66ff66; font-size: 30px;\"\u003e\u003c/i\u003e", "iconAnchor": [15, 15], "iconSize": [30, 30]});
+            marker_32ba615e744afa260a86b513ab0fd9f4.setIcon(div_icon_1f1f5bd8b80ff93816d9a1df69a9fb2d);
+        
+    
+        var popup_c7de576aeee6303f9f9fd79d13e6fba2 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_bb18ecc6d497585fff8213fe8562ddd4 = $(`<div id="html_bb18ecc6d497585fff8213fe8562ddd4" style="width: 100.0%; height: 100.0%;"><b>Jardin boulevard hassan II</b><br>Latitude: 32.2450427<br>Longitude: -8.5314156</div>`)[0];
+                popup_c7de576aeee6303f9f9fd79d13e6fba2.setContent(html_bb18ecc6d497585fff8213fe8562ddd4);
+            
+        
+
+        marker_32ba615e744afa260a86b513ab0fd9f4.bindPopup(popup_c7de576aeee6303f9f9fd79d13e6fba2)
+        ;
+
+        
+    
+</script>
+</html>
