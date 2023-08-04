@@ -1,7 +1,7 @@
 <h1 align="center">Geospatial-data Project</h1>
 
 <p  align="left">
-  This project creates an interactive map of any city with marked points of interest (POIs) using Python and various geospatial libraries. The city's geospatial data is obtained from an open-source platform like OpenStreetMap or GeoJSON. Users can explore different POIs, including <b>pharmacies</b>, <b>train stations</b>, <b>educational institutions</b>, <b>mosques</b>, <b>souks</b>, <b>hotels</b>, and <b>gardens</b>, on the interactive map.
+  This project creates an interactive map of any city with marked points of interest (POIs) using Python and various geospatial libraries. The city's geospatial data is obtained from an open-source platform like OpenStreetMap or GeoJSON. Users can explore different POIs, including <b>pharmacies</b>, <b>train stations</b>, <b>educational institutions</b>, <b>markets</b>, <b>hotels</b>, and <b>gardens</b>, on the interactive map.
 </p>
 
 <h3 align="left" style="color: #0074D9;">Features:</h3>
